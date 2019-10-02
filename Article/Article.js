@@ -112,3 +112,50 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+const articles = document.querySelector(".articles");
+console.log(articles);
+
+data.forEach(data => {
+  articles.appendChild(articleComponent(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph))
+})
+
+function articleComponent(title, date, firstParagraph, secondParagraph, thirdParagraph)
+{
+    const articleContainer = document.createElement("div");
+    articleContainer.classList.add("article-container");
+
+    const article = document.createElement("div");
+    articleContainer.appendChild(article);
+    article.classList.add("article");
+
+    const articleTitle = document.createElement("h2");
+    article.appendChild(articleTitle);
+    articleTitle.textContent = title;
+
+    const articleDate = document.createElement("p");
+    article.appendChild(articleDate);
+    articleDate.textContent = date;
+
+    const articleFirst = document.createElement("p");
+    article.appendChild(articleFirst);
+    articleFirst.textContent = firstParagraph;
+
+    const articleSecond = document.createElement("p");
+    article.appendChild(articleSecond);
+    articleSecond.textContent = secondParagraph;
+
+    const articleThird = document.createElement("p");
+    article.appendChild(articleThird);
+    articleThird.textContent = thirdParagraph;
+
+    const articleButton = document.createElement("span");
+    article.appendChild(articleButton);
+    articleButton.classList.add("expandButton");
+    articleButton.textContent = "open";
+
+    articleButton.addEventListener("click", (e) => {
+        article.classList.toggle("article-open");
+    })
+    return article;
+}
