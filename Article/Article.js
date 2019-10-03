@@ -124,10 +124,10 @@ const articles = document.querySelector(".articles");
 // console.log(articles);
 
 data.forEach(data => {
-  articles.appendChild(articleComponent(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph))
+  articles.appendChild(articleComponent(data))
 })
 
-function articleComponent(title, date, firstParagraph, secondParagraph, thirdParagraph)
+function articleComponent(data)
 {
 
     const article = document.createElement("div");
@@ -136,24 +136,24 @@ function articleComponent(title, date, firstParagraph, secondParagraph, thirdPar
 
     const articleTitle = document.createElement("h2");
     article.appendChild(articleTitle);
-    articleTitle.textContent = title;
+    articleTitle.textContent = data.title;
 
     const articleDate = document.createElement("p");
     article.appendChild(articleDate);
     articleDate.classList.add("date");
-    articleDate.textContent = date;
+    articleDate.textContent = data.date;
 
     const articleFirst = document.createElement("p");
     article.appendChild(articleFirst);
-    articleFirst.textContent = firstParagraph;
+    articleFirst.textContent = data.firstParagraph;
 
     const articleSecond = document.createElement("p");
     article.appendChild(articleSecond);
-    articleSecond.textContent = secondParagraph;
+    articleSecond.textContent = data.secondParagraph;
 
     const articleThird = document.createElement("p");
     article.appendChild(articleThird);
-    articleThird.textContent = thirdParagraph;
+    articleThird.textContent = data.thirdParagraph;
 
     const articleButton = document.createElement("span");
     article.appendChild(articleButton);
