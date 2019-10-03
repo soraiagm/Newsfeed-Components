@@ -114,7 +114,7 @@ const data = [
 */
 
 const articles = document.querySelector(".articles");
-console.log(articles);
+// console.log(articles);
 
 data.forEach(data => {
   articles.appendChild(articleComponent(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph))
@@ -122,11 +122,9 @@ data.forEach(data => {
 
 function articleComponent(title, date, firstParagraph, secondParagraph, thirdParagraph)
 {
-    const articleContainer = document.createElement("div");
-    articleContainer.classList.add("article-container");
 
     const article = document.createElement("div");
-    articleContainer.appendChild(article);
+    articles.appendChild(article);
     article.classList.add("article");
 
     const articleTitle = document.createElement("h2");
@@ -135,6 +133,7 @@ function articleComponent(title, date, firstParagraph, secondParagraph, thirdPar
 
     const articleDate = document.createElement("p");
     article.appendChild(articleDate);
+    articleDate.classList.add("date");
     articleDate.textContent = date;
 
     const articleFirst = document.createElement("p");
@@ -157,5 +156,5 @@ function articleComponent(title, date, firstParagraph, secondParagraph, thirdPar
     articleButton.addEventListener("click", (e) => {
         article.classList.toggle("article-open");
     })
-    return article;
+    return article
 }
