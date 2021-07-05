@@ -85,6 +85,13 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Why use Redux? Reasons with clear examples',
+    date: 'August 31st 2018',
+    firstParagraph: 'Simply put, Redux is a state management tool. While it’s mostly used with React, it can be used with any other JavaScript framework or library. It is lightweight at 2KB (including dependencies), so you don’t have to worry about it making your application’s asset size bigger.',
+    secondParagraph: 'With Redux, the state of your application is kept in a store and each component can access any state that it needs from this store. Let’s dive a little deeper to see why you might need a state management tool.',
+    thirdParagraph: 'There are three building parts: actions, store and reducers. Let’s briefly discuss what each of them does. This is important as they help you understand the benefits of Redux and how it’s to be used. We’ll be implementing a similar example to the login component above but this time in Redux.'
   }
 ];
 
@@ -112,3 +119,49 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+const articles = document.querySelector(".articles");
+// console.log(articles);
+
+data.forEach(data => {
+  articles.appendChild(articleComponent(data))
+})
+
+function articleComponent(data)
+{
+
+    const article = document.createElement("div");
+    articles.appendChild(article);
+    article.classList.add("article");
+
+    const articleTitle = document.createElement("h2");
+    article.appendChild(articleTitle);
+    articleTitle.textContent = data.title;
+
+    const articleDate = document.createElement("p");
+    article.appendChild(articleDate);
+    articleDate.classList.add("date");
+    articleDate.textContent = data.date;
+
+    const articleFirst = document.createElement("p");
+    article.appendChild(articleFirst);
+    articleFirst.textContent = data.firstParagraph;
+
+    const articleSecond = document.createElement("p");
+    article.appendChild(articleSecond);
+    articleSecond.textContent = data.secondParagraph;
+
+    const articleThird = document.createElement("p");
+    article.appendChild(articleThird);
+    articleThird.textContent = data.thirdParagraph;
+
+    const articleButton = document.createElement("span");
+    article.appendChild(articleButton);
+    articleButton.classList.add("expandButton");
+    articleButton.textContent = "open";
+
+    articleButton.addEventListener("click", (e) => {
+        article.classList.toggle("article-open");
+    })
+    return article
+}
